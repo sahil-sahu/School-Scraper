@@ -7,4 +7,7 @@ class GetKvSpider(scrapy.Spider):
     start_urls = ['https://no3bhubaneswar.kvs.ac.in/']
 
     def parse(self, response):
-        print("bala")
+        all_data = response.css("html").extract_first()
+        f = open("../scraped_data/data.html","w")
+        f.write(all_data)
+        f.close()
