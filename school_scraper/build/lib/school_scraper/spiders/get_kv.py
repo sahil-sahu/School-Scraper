@@ -9,6 +9,6 @@ class GetKvSpider(scrapy.Spider):
     def parse(self, response):
         all_data = response.css("html").extract_first()
         # print(str(response))
-        f = open(str(response).split("https://")[-1].split("/>")[0]+".html","w")
+        f = open("scraped_data/"+str(response).split("https://")[-1].split("/>")[0]+".html","w")
         f.write(all_data)
         f.close()
