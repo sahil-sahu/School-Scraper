@@ -1,0 +1,65 @@
+2021-01-22 05:52:56 [scrapy.utils.log] INFO: Scrapy 2.4.0 started (bot: school_scraper)
+2021-01-22 05:52:56 [scrapy.utils.log] INFO: Versions: lxml 4.5.2.0, libxml2 2.9.10, cssselect 1.1.0, parsel 1.6.0, w3lib 1.22.0, Twisted 20.3.0, Python 3.8.6 (default, Sep 25 2020, 09:36:53) - [GCC 10.2.0], pyOpenSSL 19.1.0 (OpenSSL 1.1.1h  22 Sep 2020), cryptography 3.1.1, Platform Linux-4.19.128-microsoft-standard-x86_64-with-glibc2.29
+2021-01-22 05:52:56 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.epollreactor.EPollReactor
+2021-01-22 05:52:56 [scrapy.crawler] INFO: Overridden settings:
+{'BOT_NAME': 'school_scraper',
+ 'LOG_FILE': 'logs/school_scraper/get_kv/f765be765c4711eb824d00155d31b1fe.log',
+ 'NEWSPIDER_MODULE': 'school_scraper.spiders',
+ 'SPIDER_MODULES': ['school_scraper.spiders']}
+2021-01-22 05:52:56 [scrapy.extensions.telnet] INFO: Telnet Password: 6b62cec4fe4a3d6f
+2021-01-22 05:52:56 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.logstats.LogStats']
+2021-01-22 05:52:56 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2021-01-22 05:52:56 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2021-01-22 05:52:56 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2021-01-22 05:52:56 [scrapy.core.engine] INFO: Spider opened
+2021-01-22 05:52:56 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2021-01-22 05:52:56 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2021-01-22 05:52:57 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://no1bhubaneswar.kvs.ac.in/> (referer: None)
+2021-01-22 05:52:57 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://no2bhubaneswar.kvs.ac.in/> (referer: None)
+2021-01-22 05:52:57 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://no4bhubaneswar.kvs.ac.in/> (referer: None)
+2021-01-22 05:52:57 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://no5bhubaneswar.kvs.ac.in/> (referer: None)
+2021-01-22 05:52:57 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://no3bhubaneswar.kvs.ac.in/> (referer: None)
+2021-01-22 05:52:57 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://no6bhubaneswar.kvs.ac.in/> (referer: None)
+2021-01-22 05:52:58 [scrapy.core.engine] INFO: Closing spider (finished)
+2021-01-22 05:52:58 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 1344,
+ 'downloader/request_count': 6,
+ 'downloader/request_method_count/GET': 6,
+ 'downloader/response_bytes': 93629,
+ 'downloader/response_count': 6,
+ 'downloader/response_status_count/200': 6,
+ 'elapsed_time_seconds': 1.52073,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2021, 1, 22, 0, 22, 58, 12120),
+ 'log_count/DEBUG': 6,
+ 'log_count/INFO': 10,
+ 'memusage/max': 56729600,
+ 'memusage/startup': 56729600,
+ 'response_received_count': 6,
+ 'scheduler/dequeued': 6,
+ 'scheduler/dequeued/memory': 6,
+ 'scheduler/enqueued': 6,
+ 'scheduler/enqueued/memory': 6,
+ 'start_time': datetime.datetime(2021, 1, 22, 0, 22, 56, 491390)}
+2021-01-22 05:52:58 [scrapy.core.engine] INFO: Spider closed (finished)

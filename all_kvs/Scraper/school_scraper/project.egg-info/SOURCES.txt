@@ -1,0 +1,13 @@
+setup.py
+project.egg-info/PKG-INFO
+project.egg-info/SOURCES.txt
+project.egg-info/dependency_links.txt
+project.egg-info/entry_points.txt
+project.egg-info/top_level.txt
+school_scraper/__init__.py
+school_scraper/items.py
+school_scraper/middlewares.py
+school_scraper/pipelines.py
+school_scraper/settings.py
+school_scraper/spiders/__init__.py
+school_scraper/spiders/get_kv.py
