@@ -5,8 +5,8 @@ from . import models
 from django.contrib import messages
 from django.db.models import Q
 from scrapyd_api import ScrapydAPI
-import ast
 
 
 def index(request):
     return render(request, "scrapy_ui.html")
+
