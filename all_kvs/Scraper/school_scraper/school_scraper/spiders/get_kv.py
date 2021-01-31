@@ -5,11 +5,14 @@ import os
 
 class GetKvSpider(scrapy.Spider):
     name = 'get_kv'
-    # allowed_domains = ['no1bhubaneswar.kvs.ac.in','no2bhubaneswar.kvs.ac.in','no3bhubaneswar.kvs.ac.in','no4bhubaneswar.kvs.ac.in','no5bhubaneswar.kvs.ac.in','no6bhubaneswar.kvs.ac.in']
-    start_urls = ['https://no1bhubaneswar.kvs.ac.in/', 'https://no2bhubaneswar.kvs.ac.in/', 'https://no3bhubaneswar.kvs.ac.in/',
-                  'https://no4bhubaneswar.kvs.ac.in/', 'https://no5bhubaneswar.kvs.ac.in/', 'https://no6bhubaneswar.kvs.ac.in/']
-    # start_urls = ['https://no1bhubaneswar.kvs.ac.in/']
     a_tags = []
+    def __init__(self, *args, **kwargs):
+        x = kwargs.get('links')
+        self.start_urls = x.split("\n") 
+    # allowed_domains = ['no1bhubaneswar.kvs.ac.in','no2bhubaneswar.kvs.ac.in','no3bhubaneswar.kvs.ac.in','no4bhubaneswar.kvs.ac.in','no5bhubaneswar.kvs.ac.in','no6bhubaneswar.kvs.ac.in']
+    # start_urls = ['https://no1bhubaneswar.kvs.ac.in/', 'https://no2bhubaneswar.kvs.ac.in/', 'https://no3bhubaneswar.kvs.ac.in/',
+                #   'https://no4bhubaneswar.kvs.ac.in/', 'https://no5bhubaneswar.kvs.ac.in/', 'https://no6bhubaneswar.kvs.ac.in/']
+    # start_urls = ['https://no1bhubaneswar.kvs.ac.in/']
 
     def parse(self, response):
         all_data = response.css("html").extract_first()
