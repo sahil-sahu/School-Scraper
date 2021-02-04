@@ -4,5 +4,6 @@ from . import models
 
 
 def index(request):
-    return render(request, "scrapy_ui.html")
+    data = models.Schools.objects.all()
+    return render(request, "scrapy_ui.html",{"data":data})
 

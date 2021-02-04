@@ -18,8 +18,7 @@ class GetKvSpider(scrapy.Spider):
         all_data = response.css("html").extract_first()
         all_tags = response.css("a")
         BASE_DIR = "../scraped_data/"
-        path = os.path.join(BASE_DIR, str(response).split(
-            "https://")[-1].split("/>")[0])
+        path = os.path.join(BASE_DIR, response.url.split("https://")[1])
         if not(os.path.isdir(path)):
             os.mkdir(path)
         for i in all_tags:
@@ -31,13 +30,15 @@ class GetKvSpider(scrapy.Spider):
                     self.makedir(path, dirs)
             except:
                 pass
+        else:
+            for i in self.a_tags:
+                yield response.follow("/".join(i), callback=self.temp)
+
         f = open(path + "/index.html", "w")
         x = all_data.replace('href="/', 'href="./')
         y = x.replace('src="/', 'src="' + response.url + '/')
         f.write(y)
         f.close()
-        for i in self.a_tags:
-            yield response.follow("/".join(i), callback=self.temp)
 
     def temp(self, response):
         baseurl = response.url.split("kvs.ac.in/")[0] + "kvs.ac.in"
