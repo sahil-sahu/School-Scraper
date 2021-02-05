@@ -43,7 +43,7 @@
 
   <!-- Dropdown Structure -->
                 <ul id='dropdown1' class='dropdown-content'>
-                  
+                  <li><a onclick="filter('')">All</a></li>
                 </ul>
             </form>
     </div>
@@ -109,17 +109,18 @@
         ele.style.display = "none";
       }
     });
+    $(".dropdown-trigger").text = para;
   }
   function searcher(num) {
     nm_all = li_data;
     let para = $("#search"+num).val();
-    // nm_all.forEach(ele => {
-    //   if (para in ele.querySelectorAll("strong").textContent) {
-    //     ele.style.display = "";
-    //   } else {
-    //     ele.style.display = "none";
-    //   }
-    // });
+    nm_all.forEach(ele => {
+      if (ele.querySelector("strong").textContent.includes(para.toUpperCase())) {
+        ele.style.display = "";
+      } else {
+        ele.style.display = "none";
+      }
+    });
 }
 $("form").submit(function () {
   event.preventDefault();
