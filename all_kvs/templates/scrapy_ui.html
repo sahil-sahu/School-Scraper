@@ -35,7 +35,7 @@
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
          <form class="form-srch" action="?sch=" method="GET">
                 <div class="input-field">
-                  <input id="search" type="search" required>
+                  <input onkeyup="searcher('0')" id="search0" type="search">
                   <label class="label-icon" for="search"><i class="material-icons" style="transform: scale(2);margin: auto;">search</i></label>
                   <i class="material-icons">close</i>
                 </div>
@@ -55,7 +55,7 @@
     <li><a href="collapsible.html">Javascript</a></li>
     <li> <form>
         <div class="input-field">
-          <input id="search" type="search" required>
+          <input onkeyup="searcher('1')" id="search1" type="text">
           <label class="label-icon" for="search"><i class="material-icons">search</i></label>
           <i class="material-icons">close</i>
         </div>
@@ -96,8 +96,33 @@
   $('.dropdown-trigger').dropdown();
   var regions = ['KVS Head Quarter', 'Agra', 'Ahmedabad', 'Bangalore', 'Bhopal', 'Bhubaneshwar', 'Bhubaneswar', 'Chandigarh', 'Chennai', 'Dehradun', 'Delhi', 'Ernakulam', 'Gurgaon', 'Guwahati', 'Hyderabad', 'Jabalpur', 'Jaipur', 'Jammu', 'Kolkata', 'Lucknow', 'Mumbai', 'Patna', 'Raipur', 'Ranchi', 'Silchar', 'Tinsukia', 'Varanasi', 'ZIET Bhubaneshwar', 'ZIET Chandigarh', 'ZIET Gwalior', 'ZIET Mumbai', 'ZIET Mysore'];
   regions.forEach(ele => {
-    let item = '<li><a href="#!">'+ele.replace(/ /g,"_");+'</a></li>'
+    let item = `<li><a onclick="filter('`+ele.replace(/ /g,"_")+`')">`+ele+`</a></li>`
     $(".dropdown-content").append(item);
   });
+  var li_data = document.querySelectorAll(".collapsible > *")
+  function filter(para){
+    let regions = li_data
+    regions.forEach(ele => {
+      if (para == ele.id.toString()) {
+        ele.style.display = "";
+      } else {
+        ele.style.display = "none";
+      }
+    });
+  }
+  function searcher(num) {
+    nm_all = li_data;
+    let para = $("#search"+num).val();
+    // nm_all.forEach(ele => {
+    //   if (para in ele.querySelectorAll("strong").textContent) {
+    //     ele.style.display = "";
+    //   } else {
+    //     ele.style.display = "none";
+    //   }
+    // });
+}
+$("form").submit(function () {
+  event.preventDefault();
+})
 </script>
 </html>
