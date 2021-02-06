@@ -6,9 +6,12 @@
     <title>Scraper</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 <style>
+  *{font-family: 'Titillium Web', sans-serif;}
     .nav-wrapper {
   background-color: #051a36 !important;
 }
@@ -27,25 +30,13 @@
     width: 40%;
     margin: 10px auto;
   }
-  .dropdown-content{max-height:50em;}
+  .dropdown-content{max-height:50em;width: 5em;}
 </style>
       <nav>
     <div class="nav-wrapper" style="height: 150px;">
       <a href="#!" class="brand-logo"><img  src="https://upload.wikimedia.org/wikipedia/commons/4/47/Kendriya_Vidyalaya_logo.png" alt=""></a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-         <form class="form-srch" action="?sch=" method="GET">
-                <div class="input-field">
-                  <input onkeyup="searcher('0')" id="search0" type="search">
-                  <label class="label-icon" for="search"><i class="material-icons" style="transform: scale(2);margin: auto;">search</i></label>
-                  <i class="material-icons">close</i>
-                </div>
-                <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Regions</a>
-
-  <!-- Dropdown Structure -->
-                <ul id='dropdown1' class='dropdown-content'>
-                  <li><a onclick="filter('')">All</a></li>
-                </ul>
-            </form>
+      <a data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+         
     </div>
   </nav>
   <ul class="sidenav" id="mobile-demo">
@@ -69,12 +60,15 @@
 <br>
   <div class="row">
     <div class="col s3">1</div>
-    <ul class="collapsible col s6 container">
+    <ul class="collapsible col s6">
     {% for i in data %}
         <li id="{{i.region}}">
             <div class="collapsible-header">
-                    <span><strong>{{i.sch_nm}}</strong></span>
+                <span><strong>{{i.sch_nm}}</strong></span>
                 <a style="float: right;" href="/web/{{i.source}}" title="{{i.link}}" target="_blank"><i class="material-icons">open_in_new</i></a>
+            </div>
+            <div class="collapsible-body">
+              <iframe id="/web/{{i.source}}" style="width: 100%; height: 8em; border: none;" title="{{i.sch_nm}}"></iframe>
             </div>
         </li>
 
@@ -94,7 +88,7 @@
     $('.collapsible').collapsible();
   });
   $('.dropdown-trigger').dropdown();
-  var regions = ['KVS Head Quarter', 'Agra', 'Ahmedabad', 'Bangalore', 'Bhopal', 'Bhubaneshwar', 'Bhubaneswar', 'Chandigarh', 'Chennai', 'Dehradun', 'Delhi', 'Ernakulam', 'Gurgaon', 'Guwahati', 'Hyderabad', 'Jabalpur', 'Jaipur', 'Jammu', 'Kolkata', 'Lucknow', 'Mumbai', 'Patna', 'Raipur', 'Ranchi', 'Silchar', 'Tinsukia', 'Varanasi', 'ZIET Bhubaneshwar', 'ZIET Chandigarh', 'ZIET Gwalior', 'ZIET Mumbai', 'ZIET Mysore'];
+  var regions = ['KVS Head Quarter', 'Agra', 'Ahmedabad', 'Bangalore', 'Bhopal', 'Bhubaneshwar', 'Chandigarh', 'Chennai', 'Dehradun', 'Delhi', 'Ernakulam', 'Gurgaon', 'Guwahati', 'Hyderabad', 'Jabalpur', 'Jaipur', 'Jammu', 'Kolkata', 'Lucknow', 'Mumbai', 'Patna', 'Raipur', 'Ranchi', 'Silchar', 'Tinsukia', 'Varanasi', 'ZIET Bhubaneshwar', 'ZIET Chandigarh', 'ZIET Gwalior', 'ZIET Mumbai', 'ZIET Mysore'];
   regions.forEach(ele => {
     let item = `<li><a onclick="filter('`+ele.replace(/ /g,"_")+`')">`+ele+`</a></li>`
     $(".dropdown-content").append(item);
@@ -124,6 +118,10 @@
 }
 $("form").submit(function () {
   event.preventDefault();
+})
+$(".collapsible-header").click(function(){
+  let link = $(this).parent().find("iframe").attr("id");
+  $(this).parent().find("iframe").attr("src",link);
 })
 </script>
 </html>
