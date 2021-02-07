@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scraper</title>
+    <title>KVS Web Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -15,7 +15,7 @@
     .nav-wrapper {
   background-color: #051a36 !important;
 }
-.brand-logo img{
+.brand-logo #lgo{
   height: 120px;
   margin: 15px 60px;
 }
@@ -31,70 +31,92 @@
     margin: 10px auto;
   }
   .dropdown-content{max-height:50em;width: 5em;}
+  .sidenav{background-color: rgb(255, 254, 240);}
 </style>
       <nav>
     <div class="nav-wrapper" style="height: 150px;">
-      <a href="#!" class="brand-logo"><img  src="https://upload.wikimedia.org/wikipedia/commons/4/47/Kendriya_Vidyalaya_logo.png" alt=""></a>
-      <a data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-         
+      <a href="#" class="brand-logo"><img id="lgo" src="https://upload.wikimedia.org/wikipedia/commons/4/47/Kendriya_Vidyalaya_logo.png" alt=""></a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a> 
+      <form class="form-srch hide-on-med-and-down" action="?sch=" method="GET">
+        <div class="input-field">
+          <input onkeyup="searcher('0')" id="search0" type="search">
+          <label class="label-icon" for="search"><i class="material-icons" style="transform: scale(2);margin: auto;">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+        <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Regions</a>
+
+<!-- Dropdown Structure -->
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a onclick="filter('')">All</a></li>
+        </ul>
+    </form>  
     </div>
   </nav>
   <ul class="sidenav" id="mobile-demo">
-   
-    <li><a href="sass.html">Sass</a></li>
-    <li><a href="badges.html">Components</a></li>
-    <li><a href="collapsible.html">Javascript</a></li>
-    <li> <form>
-        <div class="input-field">
-          <input onkeyup="searcher('1')" id="search1" type="text">
-          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
-        </div>
-        </form>
+    <br>
+    <li class="logo sidenav-close">
+      <a id="logo-container" href="/" class="brand-logo">
+        <img style="height: 4em; display: block;margin: auto;" src="https://upload.wikimedia.org/wikipedia/commons/4/47/Kendriya_Vidyalaya_logo.png" alt="">
+      </a>
     </li>
+    <li class="search">
+      <div class="search-wrapper">
+        <input onkeyup="searcher('1')" placeholder="Search Schools" style="margin: auto 10px;" id="search1" type="search">
+      </div>
+    </li>
+    <li style="margin-left: 1em;">Regions
+      <ul id='smdropdown1' style="margin-left: 2em;">
+        <li><a onclick="filter('')">All</a></li>
+      </ul>
+    </li>  
   </ul>
 <br>
 <br>
 <br>
 <br>
 <br>
-  <div class="row">
-    <div class="col s3">1</div>
-    <ul class="collapsible col s6">
-    {% for i in data %}
-        <li id="{{i.region}}">
-            <div class="collapsible-header">
-                <span><strong>{{i.sch_nm}}</strong></span>
-                <a style="float: right;" href="/web/{{i.source}}" title="{{i.link}}" target="_blank"><i class="material-icons">open_in_new</i></a>
-            </div>
-            <div class="collapsible-body">
-              <iframe id="/web/{{i.source}}" style="width: 100%; height: 8em; border: none;" title="{{i.sch_nm}}"></iframe>
-            </div>
-        </li>
+<div class="row">
+  <div class="col l3 m3 hide-on-small-only">1</div>
+  <ul class="collapsible col l6 m6 s8">
+  {% for i in data %}
+      <li id="{{i.region}}">
+          <div class="collapsible-header">
+              <span><strong>{{i.sch_nm}}</strong></span>
+              <a style="float: right;" href="/web/{{i.source}}" title="{{i.link}}" target="_blank"><i class="material-icons">open_in_new</i></a>
+          </div>
+          <div class="collapsible-body">
+            <iframe id="/web/{{i.source}}" style="width: 100%; height: 8em; border: none;" title="{{i.sch_nm}}"></iframe>
+          </div>
+      </li>
 
-    {% endfor %}
+  {% endfor %}
 
 </ul>
-<div class="col s3">2</div>
-</div>       
-</body>
+<div class="col l3 m3 s4">2</div>
+</div>  
 <script
   src="https://code.jquery.com/jquery-3.5.1.min.js"
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
   crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" integrity="sha512-NiWqa2rceHnN3Z5j6mSAvbwwg3tiwVNxiAQaaSMSXnRRDh5C2mk/+sKQRw8qjV1vN4nf8iK2a0b048PnHbyx+Q==" crossorigin="anonymous"></script>   
+</body>
 <script>
   $(document).ready(function(){
     $('.collapsible').collapsible();
+    $('.sidenav').sidenav();
   });
   $('.dropdown-trigger').dropdown();
   var regions = ['KVS Head Quarter', 'Agra', 'Ahmedabad', 'Bangalore', 'Bhopal', 'Bhubaneshwar', 'Chandigarh', 'Chennai', 'Dehradun', 'Delhi', 'Ernakulam', 'Gurgaon', 'Guwahati', 'Hyderabad', 'Jabalpur', 'Jaipur', 'Jammu', 'Kolkata', 'Lucknow', 'Mumbai', 'Patna', 'Raipur', 'Ranchi', 'Silchar', 'Tinsukia', 'Varanasi', 'ZIET Bhubaneshwar', 'ZIET Chandigarh', 'ZIET Gwalior', 'ZIET Mumbai', 'ZIET Mysore'];
-  regions.forEach(ele => {
-    let item = `<li><a onclick="filter('`+ele.replace(/ /g,"_")+`')">`+ele+`</a></li>`
-    $(".dropdown-content").append(item);
+  regions.forEach( ele => {
+    let item = `<li><a id="activator" onclick="filter('`+ele.replace(/ /g,"_")+`')">`+ele+`</a></li>`
+    let smitem = `<li class="sidenav-close"><a id="activator" onclick="filter('`+ele.replace(/ /g,"_")+`')">`+ele+`</a></li>`
+    $("#dropdown1").append(item);
+    $("#smdropdown1").append(smitem);
   });
   var li_data = document.querySelectorAll(".collapsible > *")
-  function filter(para){
+  function filter(para,id){
     let regions = li_data
     regions.forEach(ele => {
       if (para == ele.id.toString()) {
@@ -115,9 +137,13 @@
         ele.style.display = "none";
       }
     });
-}
+};
 $("form").submit(function () {
   event.preventDefault();
+});
+$("#activator").click(function(){
+  $(this).parent().parent().children().removeClass();
+  $(this).parent().attr("class","active");
 })
 $(".collapsible-header").click(function(){
   let link = $(this).parent().find("iframe").attr("id");
