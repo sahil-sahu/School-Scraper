@@ -41,7 +41,7 @@
       </a> 
       <form class="form-srch hide-on-med-and-down" action="?sch=" method="GET">
         <div class="input-field">
-          <input onkeyup="searcher('0')" id="search0" type="search">
+          <input onkeyup="searcher((event,'0'))" id="search0" type="search">
           <label class="label-icon" for="search"><i class="material-icons" style="transform: scale(2);margin: auto;">search</i></label>
           <i class="material-icons">close</i>
         </div>
@@ -63,7 +63,7 @@
     </li>
     <li class="search">
       <div class="search-wrapper">
-        <input onkeyup="searcher('1')" placeholder="Search Schools" style="margin: auto 10px;" id="search1" type="search">
+        <input onkeyup="searcher(event,'1')" placeholder="Search Schools" style="margin: auto 10px;" id="search1" type="search">
       </div>
     </li>
     <li style="margin-left: 1em;">Regions
@@ -127,7 +127,7 @@
     });
     $(".dropdown-trigger").text = para;
   }
-  function searcher(num) {
+  function searcher(event,num) {
     nm_all = li_data;
     let para = $("#search"+num).val();
     nm_all.forEach(ele => {
@@ -137,6 +137,9 @@
         ele.style.display = "none";
       }
     });
+    if (event.which == 13 && num == "1") {
+      $('.sidenav').sidenav('close');
+    }
 };
 $("form").submit(function () {
   event.preventDefault();
