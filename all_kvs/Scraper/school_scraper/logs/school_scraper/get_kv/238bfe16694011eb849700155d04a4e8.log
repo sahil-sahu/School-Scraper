@@ -1,0 +1,102 @@
+2021-02-07 17:59:40 [scrapy.utils.log] INFO: Scrapy 2.4.1 started (bot: school_scraper)
+2021-02-07 17:59:40 [scrapy.utils.log] INFO: Versions: lxml 4.6.2.0, libxml2 2.9.10, cssselect 1.1.0, parsel 1.6.0, w3lib 1.22.0, Twisted 20.3.0, Python 3.9.1 (default, Dec  8 2020, 07:51:42) - [GCC 10.2.0], pyOpenSSL 20.0.1 (OpenSSL 1.1.1i  8 Dec 2020), cryptography 3.3.1, Platform Linux-4.19.128-microsoft-standard-x86_64-with-glibc2.31
+2021-02-07 17:59:40 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.epollreactor.EPollReactor
+2021-02-07 17:59:40 [scrapy.crawler] INFO: Overridden settings:
+{'BOT_NAME': 'school_scraper',
+ 'LOG_FILE': 'logs/school_scraper/get_kv/238bfe16694011eb849700155d04a4e8.log',
+ 'NEWSPIDER_MODULE': 'school_scraper.spiders',
+ 'SPIDER_MODULES': ['school_scraper.spiders']}
+2021-02-07 17:59:40 [scrapy.extensions.telnet] INFO: Telnet Password: 797696ac59b90cc2
+2021-02-07 17:59:40 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.logstats.LogStats']
+2021-02-07 17:59:40 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2021-02-07 17:59:40 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2021-02-07 17:59:40 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2021-02-07 17:59:40 [scrapy.core.engine] INFO: Spider opened
+2021-02-07 17:59:40 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2021-02-07 17:59:40 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2021-02-07 17:59:40 [scrapy.core.engine] ERROR: Error while obtaining start requests
+Traceback (most recent call last):
+  File "/home/sahilcoder1/School Scraper/School_Scraper/env/lib/python3.9/site-packages/scrapy/core/engine.py", line 129, in _next_request
+    request = next(slot.start_requests)
+  File "/home/sahilcoder1/School Scraper/School_Scraper/env/lib/python3.9/site-packages/scrapy/spiders/__init__.py", line 77, in start_requests
+    yield Request(url, dont_filter=True)
+  File "/home/sahilcoder1/School Scraper/School_Scraper/env/lib/python3.9/site-packages/scrapy/http/request/__init__.py", line 25, in __init__
+    self._set_url(url)
+  File "/home/sahilcoder1/School Scraper/School_Scraper/env/lib/python3.9/site-packages/scrapy/http/request/__init__.py", line 73, in _set_url
+    raise ValueError(f'Missing scheme in request url: {self._url}')
+ValueError: Missing scheme in request url: 
+2021-02-07 17:59:55 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://pixinvent.com/demo/vuexy-vuejs-admin-dashboard-template/demo-1/dashboard/ecommerce> (referer: None)
+2021-02-07 17:59:56 [scrapy.core.scraper] ERROR: Spider error processing <GET https://pixinvent.com/demo/vuexy-vuejs-admin-dashboard-template/demo-1/dashboard/ecommerce> (referer: None)
+Traceback (most recent call last):
+  File "/home/sahilcoder1/School Scraper/School_Scraper/env/lib/python3.9/site-packages/scrapy/utils/defer.py", line 120, in iter_errback
+    yield next(it)
+  File "/home/sahilcoder1/School Scraper/School_Scraper/env/lib/python3.9/site-packages/scrapy/utils/python.py", line 353, in __next__
+    return next(self.data)
+  File "/home/sahilcoder1/School Scraper/School_Scraper/env/lib/python3.9/site-packages/scrapy/utils/python.py", line 353, in __next__
+    return next(self.data)
+  File "/home/sahilcoder1/School Scraper/School_Scraper/env/lib/python3.9/site-packages/scrapy/core/spidermw.py", line 62, in _evaluate_iterable
+    for r in iterable:
+  File "/home/sahilcoder1/School Scraper/School_Scraper/env/lib/python3.9/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/sahilcoder1/School Scraper/School_Scraper/env/lib/python3.9/site-packages/scrapy/core/spidermw.py", line 62, in _evaluate_iterable
+    for r in iterable:
+  File "/home/sahilcoder1/School Scraper/School_Scraper/env/lib/python3.9/site-packages/scrapy/spidermiddlewares/referer.py", line 340, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/sahilcoder1/School Scraper/School_Scraper/env/lib/python3.9/site-packages/scrapy/core/spidermw.py", line 62, in _evaluate_iterable
+    for r in iterable:
+  File "/home/sahilcoder1/School Scraper/School_Scraper/env/lib/python3.9/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/sahilcoder1/School Scraper/School_Scraper/env/lib/python3.9/site-packages/scrapy/core/spidermw.py", line 62, in _evaluate_iterable
+    for r in iterable:
+  File "/home/sahilcoder1/School Scraper/School_Scraper/env/lib/python3.9/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/sahilcoder1/School Scraper/School_Scraper/env/lib/python3.9/site-packages/scrapy/core/spidermw.py", line 62, in _evaluate_iterable
+    for r in iterable:
+  File "/home/sahilcoder1/scraper/all_kvs/Scraper/school_scraper/school_scraper/spiders/get_kv.py", line 25, in parse
+    os.mkdir(path)
+FileNotFoundError: [Errno 2] No such file or directory: '../scraped_data/pixinvent.com/demo/vuexy-vuejs-admin-dashboard-template/demo-1/dashboard/ecommerce'
+2021-02-07 17:59:56 [scrapy.core.engine] INFO: Closing spider (finished)
+2021-02-07 17:59:56 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 281,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 3370,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'elapsed_time_seconds': 16.118639,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2021, 2, 7, 12, 29, 56, 444443),
+ 'log_count/DEBUG': 1,
+ 'log_count/ERROR': 2,
+ 'log_count/INFO': 10,
+ 'memusage/max': 57843712,
+ 'memusage/startup': 57843712,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'spider_exceptions/FileNotFoundError': 1,
+ 'start_time': datetime.datetime(2021, 2, 7, 12, 29, 40, 325804)}
+2021-02-07 17:59:56 [scrapy.core.engine] INFO: Spider closed (finished)

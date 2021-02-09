@@ -6,19 +6,20 @@ import os
 class GetKvSpider(scrapy.Spider):
     name = 'get_kv'
     a_tags = []
-    def __init__(self, *args, **kwargs):
-        x = kwargs.get('links')
-        self.start_urls = x.split("\n") 
+
+    # def __init__(self, *args, **kwargs):
+        # x = kwargs.get('links')
+        # self.start_urls = x
     # allowed_domains = ['no1bhubaneswar.kvs.ac.in','no2bhubaneswar.kvs.ac.in','no3bhubaneswar.kvs.ac.in','no4bhubaneswar.kvs.ac.in','no5bhubaneswar.kvs.ac.in','no6bhubaneswar.kvs.ac.in']
-    # start_urls = ['https://no1bhubaneswar.kvs.ac.in/', 'https://no2bhubaneswar.kvs.ac.in/', 'https://no3bhubaneswar.kvs.ac.in/',
-                #   'https://no4bhubaneswar.kvs.ac.in/', 'https://no5bhubaneswar.kvs.ac.in/', 'https://no6bhubaneswar.kvs.ac.in/']
-    # start_urls = ['https://no1bhubaneswar.kvs.ac.in/']
+    # start_urls = ['http://no1bhubaneswar.kvs.ac.in/', 'http://no2bhubaneswar.kvs.ac.in/', 'http://no3bhubaneswar.kvs.ac.in/',
+        #   'http://no4bhubaneswar.kvs.ac.in/', 'http://no5bhubaneswar.kvs.ac.in/', 'http://no6bhubaneswar.kvs.ac.in/']
+    start_urls = ['http://www.royalsaga.in/']
 
     def parse(self, response):
         all_data = response.css("html").extract_first()
         all_tags = response.css("a")
         BASE_DIR = "../scraped_data/"
-        path = os.path.join(BASE_DIR, response.url.split("https://")[1])
+        path = os.path.join(BASE_DIR, response.url.split("http://")[1])
         if not(os.path.isdir(path)):
             os.mkdir(path)
         for i in all_tags:
@@ -43,12 +44,12 @@ class GetKvSpider(scrapy.Spider):
     def temp(self, response):
         baseurl = response.url.split("kvs.ac.in/")[0] + "kvs.ac.in"
         BASE_DIR = "../scraped_data/"
-        path = os.path.join(BASE_DIR, response.url.split("https://")[1])
+        path = os.path.join(BASE_DIR, response.url.split("http://")[1])
         f = open(path + "/index.html", "w")
         all_data = response.css("html").extract_first()
 
         x = all_data.replace(
-            'href="/', 'href="' + (response.url.split("https://")[1].count('/')-1) * '../')
+            'href="/', 'href="' + (response.url.split("http://")[1].count('/') - 1) * '../')
         y = x.replace('src="/', 'src="' + baseurl + "/")
         f.write(y)
         f.close()
